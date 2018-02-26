@@ -1,0 +1,778 @@
+{
+    "swagger": "2.0", 
+    "info": {
+        "title": "Promotion Management", 
+        "description": "This is Swagger UI environment generated for the TMF Promotion Management specification", 
+        "version": "2.0"
+    }, 
+    "host": "biologeek.orange-labs.fr", 
+    "basePath": "/tmf-api/promotionManagement", 
+    "schemes": [
+        "https"
+    ], 
+    "consumes": [
+        "application/json"
+    ], 
+    "produces": [
+        "application/json"
+    ], 
+    "paths": {
+        "/promotion": {
+            "get": {
+                "operationId": "listPromotion", 
+                "summary": "List or find 'Promotion' objects", 
+                "tags": [
+                    "promotion"
+                ], 
+                "parameters": [
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "fields", 
+                        "description": "Comma separated properties to display in response"
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "@baseType", 
+                        "description": "For filtering: "
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "@schemaLocation", 
+                        "description": "For filtering: "
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "@type", 
+                        "description": "For filtering: "
+                    }, 
+                    {
+                        "name": "lastUpdate", 
+                        "format": "date-time", 
+                        "required": false, 
+                        "in": "query", 
+                        "type": "string", 
+                        "description": "For filtering: Latest update date of Promotion"
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "lifecycleStatus", 
+                        "description": "For filtering: Status of Promotion, including draft/Test/WaitForApproval/Release/Suspend/Retirement."
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "name", 
+                        "description": "For filtering: Name of Promotion."
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "type", 
+                        "description": "For filtering: Type of promotion.The basic type is Award/Discount/Reduction. More types can be extended in future."
+                    }, 
+                    {
+                        "name": "validFor.endDateTime", 
+                        "format": "date-time", 
+                        "required": false, 
+                        "in": "query", 
+                        "type": "string", 
+                        "description": "For filtering: An instant of time, ending at the TimePeriod."
+                    }, 
+                    {
+                        "name": "validFor.startDateTime", 
+                        "format": "date-time", 
+                        "required": false, 
+                        "in": "query", 
+                        "type": "string", 
+                        "description": "For filtering: An instant of time, starting at the TimePeriod"
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "pattern.@schemaLocation", 
+                        "description": "For filtering: "
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "pattern.@type", 
+                        "description": "For filtering: "
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "pattern.name", 
+                        "description": "For filtering: Name"
+                    }, 
+                    {
+                        "type": "integer", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "pattern.priority", 
+                        "description": "For filtering: Priority. Smaller number means high."
+                    }, 
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "pattern.relationTypeAmongGroup", 
+                        "description": "For filtering: AND/OR ,The logical relation type amongst the promotion criteria group."
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Ok", 
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Promotion"
+                            }, 
+                            "type": "array"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }, 
+            "post": {
+                "operationId": "createPromotion", 
+                "summary": "Creates a 'Promotion'", 
+                "tags": [
+                    "promotion"
+                ], 
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Promotion_Create"
+                        }, 
+                        "required": true, 
+                        "in": "body", 
+                        "name": "promotion", 
+                        "description": "The Promotion to be created"
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Created", 
+                        "schema": {
+                            "$ref": "#/definitions/Promotion"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
+        "/promotion/{id}": {
+            "get": {
+                "operationId": "retrievePromotion", 
+                "summary": "Retrieves a 'Promotion' by Id", 
+                "tags": [
+                    "promotion"
+                ], 
+                "parameters": [
+                    {
+                        "required": true, 
+                        "type": "string", 
+                        "name": "id", 
+                        "in": "path", 
+                        "description": "Identifier of the Promotion"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Ok", 
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Promotion"
+                            }, 
+                            "type": "array"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }, 
+            "patch": {
+                "operationId": "patchPromotion", 
+                "summary": "Updates partially a 'Promotion' by Id", 
+                "tags": [
+                    "promotion"
+                ], 
+                "parameters": [
+                    {
+                        "required": true, 
+                        "type": "string", 
+                        "name": "id", 
+                        "in": "path", 
+                        "description": "Identifier of the Promotion"
+                    }, 
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Promotion_Update"
+                        }, 
+                        "required": true, 
+                        "in": "body", 
+                        "name": "promotion", 
+                        "description": "The Promotion to be updated"
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Updated", 
+                        "schema": {
+                            "$ref": "#/definitions/Promotion"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }, 
+            "delete": {
+                "operationId": "deletePromotion", 
+                "summary": "Deletes a 'Promotion' by Id", 
+                "tags": [
+                    "promotion"
+                ], 
+                "parameters": [
+                    {
+                        "required": true, 
+                        "type": "string", 
+                        "name": "id", 
+                        "in": "path", 
+                        "description": "Identifier of the Promotion"
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
+        "/hub": {
+            "post": {
+                "operationId": "registerListener", 
+                "summary": "Register a listener", 
+                "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.", 
+                "tags": [
+                    "events subscription"
+                ], 
+                "parameters": [
+                    {
+                        "name": "data", 
+                        "schema": {
+                            "$ref": "#/definitions/EventSubscriptionInput"
+                        }, 
+                        "required": true, 
+                        "in": "body", 
+                        "description": "Data containing the callback endpoint to deliver the information"
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Subscribed", 
+                        "schema": {
+                            "$ref": "#/definitions/EventSubscription"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
+        "/hub/{id}": {
+            "delete": {
+                "operationId": "unregisterListener", 
+                "summary": "Unregister a listener", 
+                "description": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.", 
+                "tags": [
+                    "events subscription"
+                ], 
+                "parameters": [
+                    {
+                        "name": "id", 
+                        "type": "string", 
+                        "required": true, 
+                        "in": "path", 
+                        "description": "The id of the registered listener"
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Unsubscribed"
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    }, 
+    "definitions": {
+        "Promotion": {
+            "type": "object", 
+            "description": "Promotion Resource is used to provide the additional discount, voucher, bonus or gift to the customer who meets the pre-defined criteria. Using promotion, the enterprise is able to attract the users and encourage more consumption, especially continuous purchases.   Normally Promotion is not regarded as one type of product or product offering. It is often applied when the customer buys the product offerings with the price or amount surpassing the certain limit.", 
+            "properties": {
+                "@baseType": {
+                    "type": "string"
+                }, 
+                "@schemaLocation": {
+                    "type": "string"
+                }, 
+                "@type": {
+                    "type": "string"
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Description of Promotion"
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Hyperlink to access the promotion."
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier of Promotion."
+                }, 
+                "lastUpdate": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "Latest update date of Promotion"
+                }, 
+                "lifecycleStatus": {
+                    "type": "string", 
+                    "description": "Status of Promotion, including draft/Test/WaitForApproval/Release/Suspend/Retirement."
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of Promotion."
+                }, 
+                "type": {
+                    "type": "string", 
+                    "description": "Type of promotion.The basic type is Award/Discount/Reduction. More types can be extended in future."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The period for which the promotion is valid."
+                }, 
+                "pattern": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PromotionPattern"
+                    }
+                }
+            }
+        }, 
+        "Promotion_Create": {
+            "type": "object", 
+            "description": "Promotion Resource is used to provide the additional discount, voucher, bonus or gift to the customer who meets the pre-defined criteria. Using promotion, the enterprise is able to attract the users and encourage more consumption, especially continuous purchases.   Normally Promotion is not regarded as one type of product or product offering. It is often applied when the customer buys the product offerings with the price or amount surpassing the certain limit.\nSkipped properties: id,href", 
+            "required": [
+                "name"
+            ], 
+            "properties": {
+                "@baseType": {
+                    "type": "string"
+                }, 
+                "@schemaLocation": {
+                    "type": "string"
+                }, 
+                "@type": {
+                    "type": "string"
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Description of Promotion"
+                }, 
+                "lastUpdate": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "Latest update date of Promotion"
+                }, 
+                "lifecycleStatus": {
+                    "type": "string", 
+                    "description": "Status of Promotion, including draft/Test/WaitForApproval/Release/Suspend/Retirement."
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of Promotion."
+                }, 
+                "type": {
+                    "type": "string", 
+                    "description": "Type of promotion.The basic type is Award/Discount/Reduction. More types can be extended in future."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The period for which the promotion is valid."
+                }, 
+                "pattern": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PromotionPattern"
+                    }
+                }
+            }
+        }, 
+        "Promotion_Update": {
+            "type": "object", 
+            "description": "Promotion Resource is used to provide the additional discount, voucher, bonus or gift to the customer who meets the pre-defined criteria. Using promotion, the enterprise is able to attract the users and encourage more consumption, especially continuous purchases.   Normally Promotion is not regarded as one type of product or product offering. It is often applied when the customer buys the product offerings with the price or amount surpassing the certain limit.\nSkipped properties: id,href,id,href", 
+            "properties": {
+                "@baseType": {
+                    "type": "string"
+                }, 
+                "@schemaLocation": {
+                    "type": "string"
+                }, 
+                "@type": {
+                    "type": "string"
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Description of Promotion"
+                }, 
+                "lastUpdate": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "Latest update date of Promotion"
+                }, 
+                "lifecycleStatus": {
+                    "type": "string", 
+                    "description": "Status of Promotion, including draft/Test/WaitForApproval/Release/Suspend/Retirement."
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of Promotion."
+                }, 
+                "type": {
+                    "type": "string", 
+                    "description": "Type of promotion.The basic type is Award/Discount/Reduction. More types can be extended in future."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The period for which the promotion is valid."
+                }, 
+                "pattern": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PromotionPattern"
+                    }
+                }
+            }
+        }, 
+        "TimePeriod": {
+            "type": "object", 
+            "description": "A base / value business entity used to represent a period of time between two timepoints.", 
+            "properties": {
+                "endDateTime": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "An instant of time, ending at the TimePeriod."
+                }, 
+                "startDateTime": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "An instant of time, starting at the TimePeriod"
+                }
+            }
+        }, 
+        "PromotionPattern": {
+            "type": "object", 
+            "description": "Detailed pattern of the promotion.The pattern decides the conditions of promotion and the benefit of the promotion to be given to the eligible customer.", 
+            "required": [
+                "name"
+            ], 
+			"properties": {
+                "@schemaLocation": {
+                    "type": "string"
+                }, 
+                "@type": {
+                    "type": "string"
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Description"
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier."
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name"
+                }, 
+                "priority": {
+                    "type": "integer", 
+                    "description": "Priority. Smaller number means high."
+                }, 
+                "relationTypeAmongGroup": {
+                    "type": "string", 
+                    "description": "AND/OR ,The logical relation type amongst the promotion criteria group."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The period  for which the promotion pattern  is valid."
+                }, 
+                "action": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PromotionAction"
+                    }
+                }, 
+                "criteriaGroup": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PromotionCriteriaGroup"
+                    }
+                }
+            }
+        }, 
+        "PromotionAction": {
+            "type": "object", 
+            "description": "Action of the promotion.When the customer meets the conditions in the promotion pattern, the customer can be given the benefits in the action.", 
+            "required": [
+                "actionObjectId",
+				"actionType",
+				"actionValue",
+				"id"
+            ],
+			"properties": {
+                "actionObjectId": {
+                    "type": "string", 
+                    "description": "It refers to the object (entity) ID which is impacted by the promotion action. When the Promotion -&gt; type is 1: Award, the actionObjectId is the sub-account ID; When the Promotion -&gt; type is 2: Discount, it is the offering ID; When the Promotion -&gt; type is 3: reduction, it is the offering ID."
+                }, 
+                "actionType": {
+                    "type": "string", 
+                    "description": "When the Promotion -&gt; type is 1: Award, the action type can be one of the following:voice (minute),data (MB),data (GB),SMS,bonus point,physical gift,voucher,promotion code,an existing offering,currency. More types of action can be extended in future."
+                }, 
+                "actionValue": {
+                    "type": "number", 
+                    "format": "float", 
+                    "description": "When the Promotion -&gt; type is 1: Award, it means the amount or value of the awards decided by actionType, such as:Amount of gift,Amount of bonus,Value of discount; When the Promotion -&gt; type is 2: Discount, it means the value of the discount; When the Promotion -&gt; type is 3: reduction, it means the value of the reduced money ."
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier."
+                }
+            }
+        }, 
+        "PromotionCriteriaGroup": {
+            "type": "object", 
+            "description": "The group of the criteria of the promotion. The logical relationship between different groups is decided by the relationTypeInGroup.", 
+            "required": [
+                "groupName",
+				"relationTypeInGroup",
+				"id"
+            ],
+			"properties": {
+                "groupName": {
+                    "type": "string", 
+                    "description": "Name of the group."
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique Identifier"
+                }, 
+                "relationTypeInGroup": {
+                    "type": "string", 
+                    "description": "AND/OR,The logical relation type amongst the various criteria inside a promotion criteria group."
+                }, 
+                "criteria": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PromotionCriteria"
+                    }
+                }
+            }
+        }, 
+        "PromotionCriteria": {
+            "type": "object", 
+            "description": "Criteria of the promotion.", 
+			"required": [
+                "criteriaOperator",
+				"criteriaPara",
+				"criteriaValue",
+				"id"
+            ],
+			"properties": {
+                "criteriaOperator": {
+                    "type": "string", 
+                    "description": "The logic expression including parameter and operator. includeing:=,&gt;,&lt;,&gt;=,&lt;=,&lt;&gt;"
+                }, 
+                "criteriaPara": {
+                    "type": "string", 
+                    "description": "The parameter (factor) of the criteria.The basic factors are abstracted from these data sources.There are several detail parameters ."
+                }, 
+                "criteriaValue": {
+                    "type": "string", 
+                    "description": "The value is filled for the comparison of the criteria."
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier."
+                }
+            }
+        }, 
+        "EventSubscription": {
+            "required": [
+                "id", 
+                "callback"
+            ], 
+            "properties": {
+                "id": {
+                    "type": "string", 
+                    "description": "Id of the listener"
+                }, 
+                "callback": {
+                    "type": "string", 
+                    "description": "The callback being registered."
+                }, 
+                "query": {
+                    "type": "string", 
+                    "description": "additional data to be passed"
+                }
+            }
+        }, 
+        "EventSubscriptionInput": {
+            "required": [
+                "callback"
+            ], 
+            "properties": {
+                "callback": {
+                    "type": "string", 
+                    "description": "The callback being registered."
+                }, 
+                "query": {
+                    "type": "string", 
+                    "description": "additional data to be passed"
+                }
+            }
+        }, 
+        "Error": {
+            "required": [
+                "code", 
+                "message"
+            ], 
+            "properties": {
+                "code": {
+                    "type": "integer", 
+                    "description": "An integer coding the error type. This is given to caller so he can translate them if required."
+                }, 
+                "message": {
+                    "type": "string", 
+                    "description": "A short localized string that describes the error."
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "(optional) A long localized error description if needed. It can contain precise information about which parameter is missing, or what are the identifier acceptable values."
+                }, 
+                "infoURL": {
+                    "type": "string", 
+                    "description": "(optional) A URL to online documentation that provides more information about the error."
+                }
+            }
+        }
+    }
+}
