@@ -6,7 +6,7 @@
         "version": "2.0"
     }, 
     "host": "biologeek.orange-labs.fr", 
-    "basePath": "/tmf-api/promotionManagement", 
+    "basePath": "/tmf-api/promotionManagement/v2/", 
     "schemes": [
         "https"
     ], 
@@ -33,105 +33,129 @@
                         "description": "Comma separated properties to display in response"
                     }, 
                     {
-                        "type": "string", 
+                        "type": "integer", 
                         "required": false, 
                         "in": "query", 
-                        "name": "@baseType", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "@schemaLocation", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "@type", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "name": "lastUpdate", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: Latest update date of Promotion"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "lifecycleStatus", 
-                        "description": "For filtering: Status of Promotion, including draft/Test/WaitForApproval/Release/Suspend/Retirement."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "name", 
-                        "description": "For filtering: Name of Promotion."
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "type", 
-                        "description": "For filtering: Type of promotion.The basic type is Award/Discount/Reduction. More types can be extended in future."
-                    }, 
-                    {
-                        "name": "validFor.endDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, ending at the TimePeriod."
-                    }, 
-                    {
-                        "name": "validFor.startDateTime", 
-                        "format": "date-time", 
-                        "required": false, 
-                        "in": "query", 
-                        "type": "string", 
-                        "description": "For filtering: An instant of time, starting at the TimePeriod"
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "pattern.@schemaLocation", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "pattern.@type", 
-                        "description": "For filtering: "
-                    }, 
-                    {
-                        "type": "string", 
-                        "required": false, 
-                        "in": "query", 
-                        "name": "pattern.name", 
-                        "description": "For filtering: Name"
+                        "name": "offset", 
+                        "description": "Requested index for start of resources to be provided in response"
                     }, 
                     {
                         "type": "integer", 
                         "required": false, 
                         "in": "query", 
-                        "name": "pattern.priority", 
-                        "description": "For filtering: Priority. Smaller number means high."
+                        "name": "limit", 
+                        "description": "Requested number of resources to be provided in response"
                     }, 
                     {
-                        "type": "string", 
-                        "required": false, 
+                        "format": "date-time", 
                         "in": "query", 
+                        "type": "string", 
+                        "name": "lastUpdate", 
+                        "description": "For filtering on the base of 'lastUpdate' field (equality)"
+                    }, 
+                    {
+                        "name": "lastUpdate.gt", 
+                        "description": "For filtering on the base of 'lastUpdate' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "lastUpdate.lt", 
+                        "description": "For filtering on the base of 'lastUpdate' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "lifecycleStatus", 
+                        "description": "For filtering on the base of 'lifecycleStatus' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "name", 
+                        "description": "For filtering on the base of 'name' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "type", 
+                        "description": "For filtering on the base of 'type' field (equality)"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "validFor.endDateTime", 
+                        "description": "For filtering on the base of 'endDateTime' field (equality)"
+                    }, 
+                    {
+                        "name": "validFor.endDateTime.gt", 
+                        "description": "For filtering on the base of 'endDateTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "validFor.endDateTime.lt", 
+                        "description": "For filtering on the base of 'endDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "format": "date-time", 
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "validFor.startDateTime", 
+                        "description": "For filtering on the base of 'startDateTime' field (equality)"
+                    }, 
+                    {
+                        "name": "validFor.startDateTime.gt", 
+                        "description": "For filtering on the base of 'startDateTime' field (great than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "validFor.startDateTime.lt", 
+                        "description": "For filtering on the base of 'startDateTime' field (less than)", 
+                        "type": "string", 
+                        "format": "date-time", 
+                        "in": "query"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
+                        "name": "pattern.name", 
+                        "description": "For filtering on the base of 'name' field (equality)"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "integer", 
+                        "name": "pattern.priority", 
+                        "description": "For filtering on the base of 'priority' field (equality)"
+                    }, 
+                    {
+                        "name": "pattern.priority.gt", 
+                        "description": "For filtering on the base of 'priority' field (great than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
+                        "name": "pattern.priority.lt", 
+                        "description": "For filtering on the base of 'priority' field (less than)", 
+                        "type": "integer", 
+                        "in": "query"
+                    }, 
+                    {
+                        "in": "query", 
+                        "type": "string", 
                         "name": "pattern.relationTypeAmongGroup", 
-                        "description": "For filtering: AND/OR ,The logical relation type amongst the promotion criteria group."
+                        "description": "For filtering on the base of 'relationTypeAmongGroup' field (equality)"
                     }
                 ], 
                 "responses": {
@@ -402,6 +426,9 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+                    "204": {
+                        "description": "Deleted"
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -416,16 +443,10 @@
         "Promotion": {
             "type": "object", 
             "description": "Promotion Resource is used to provide the additional discount, voucher, bonus or gift to the customer who meets the pre-defined criteria. Using promotion, the enterprise is able to attract the users and encourage more consumption, especially continuous purchases.   Normally Promotion is not regarded as one type of product or product offering. It is often applied when the customer buys the product offerings with the price or amount surpassing the certain limit.", 
+            "required": [
+                "name"
+            ], 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "description": {
                     "type": "string", 
                     "description": "Description of Promotion"
@@ -464,6 +485,18 @@
                     "items": {
                         "$ref": "#/definitions/PromotionPattern"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -474,15 +507,6 @@
                 "name"
             ], 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "description": {
                     "type": "string", 
                     "description": "Description of Promotion"
@@ -513,6 +537,18 @@
                     "items": {
                         "$ref": "#/definitions/PromotionPattern"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -520,15 +556,6 @@
             "type": "object", 
             "description": "Promotion Resource is used to provide the additional discount, voucher, bonus or gift to the customer who meets the pre-defined criteria. Using promotion, the enterprise is able to attract the users and encourage more consumption, especially continuous purchases.   Normally Promotion is not regarded as one type of product or product offering. It is often applied when the customer buys the product offerings with the price or amount surpassing the certain limit.\nSkipped properties: id,href,id,href", 
             "properties": {
-                "@baseType": {
-                    "type": "string"
-                }, 
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
                 "description": {
                     "type": "string", 
                     "description": "Description of Promotion"
@@ -559,6 +586,18 @@
                     "items": {
                         "$ref": "#/definitions/PromotionPattern"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "A link to the schema describing a resource (for type extension)."
+                }, 
+                "@baseType": {
+                    "type": "string", 
+                    "description": "The base type for use in polymorphic collections"
                 }
             }
         }, 
@@ -582,15 +621,10 @@
             "type": "object", 
             "description": "Detailed pattern of the promotion.The pattern decides the conditions of promotion and the benefit of the promotion to be given to the eligible customer.", 
             "required": [
+                "id", 
                 "name"
             ], 
-			"properties": {
-                "@schemaLocation": {
-                    "type": "string"
-                }, 
-                "@type": {
-                    "type": "string"
-                }, 
+            "properties": {
                 "description": {
                     "type": "string", 
                     "description": "Description"
@@ -626,19 +660,17 @@
                     "items": {
                         "$ref": "#/definitions/PromotionCriteriaGroup"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
         "PromotionAction": {
             "type": "object", 
             "description": "Action of the promotion.When the customer meets the conditions in the promotion pattern, the customer can be given the benefits in the action.", 
-            "required": [
-                "actionObjectId",
-				"actionType",
-				"actionValue",
-				"id"
-            ],
-			"properties": {
+            "properties": {
                 "actionObjectId": {
                     "type": "string", 
                     "description": "It refers to the object (entity) ID which is impacted by the promotion action. When the Promotion -&gt; type is 1: Award, the actionObjectId is the sub-account ID; When the Promotion -&gt; type is 2: Discount, it is the offering ID; When the Promotion -&gt; type is 3: reduction, it is the offering ID."
@@ -655,18 +687,17 @@
                 "id": {
                     "type": "string", 
                     "description": "Unique identifier."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
         "PromotionCriteriaGroup": {
             "type": "object", 
             "description": "The group of the criteria of the promotion. The logical relationship between different groups is decided by the relationTypeInGroup.", 
-            "required": [
-                "groupName",
-				"relationTypeInGroup",
-				"id"
-            ],
-			"properties": {
+            "properties": {
                 "groupName": {
                     "type": "string", 
                     "description": "Name of the group."
@@ -684,19 +715,17 @@
                     "items": {
                         "$ref": "#/definitions/PromotionCriteria"
                     }
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
         "PromotionCriteria": {
             "type": "object", 
             "description": "Criteria of the promotion.", 
-			"required": [
-                "criteriaOperator",
-				"criteriaPara",
-				"criteriaValue",
-				"id"
-            ],
-			"properties": {
+            "properties": {
                 "criteriaOperator": {
                     "type": "string", 
                     "description": "The logic expression including parameter and operator. includeing:=,&gt;,&lt;,&gt;=,&lt;=,&lt;&gt;"
@@ -712,6 +741,10 @@
                 "id": {
                     "type": "string", 
                     "description": "Unique identifier."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "The class type of the actual resource (for type extension)."
                 }
             }
         }, 
@@ -753,24 +786,36 @@
         "Error": {
             "required": [
                 "code", 
-                "message"
+                "reason"
             ], 
             "properties": {
                 "code": {
                     "type": "integer", 
-                    "description": "An integer coding the error type. This is given to caller so he can translate them if required."
+                    "description": "Application related code."
+                }, 
+                "reason": {
+                    "type": "integer", 
+                    "description": "Text that explains the reason for error."
                 }, 
                 "message": {
                     "type": "string", 
-                    "description": "A short localized string that describes the error."
+                    "description": "(optional) Text that provide more details and corrective actions related to the error."
                 }, 
-                "description": {
-                    "type": "string", 
-                    "description": "(optional) A long localized error description if needed. It can contain precise information about which parameter is missing, or what are the identifier acceptable values."
+                "status": {
+                    "type": "integer", 
+                    "description": "(optional) http error code extension like 400-2"
                 }, 
-                "infoURL": {
+                "referenceError": {
                     "type": "string", 
                     "description": "(optional) A URL to online documentation that provides more information about the error."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "(optional) The class type of a REST resource."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "(optional) A link to the schema describing a REST resource."
                 }
             }
         }
