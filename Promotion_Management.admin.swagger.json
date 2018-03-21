@@ -672,12 +672,11 @@
             "description": "Action of the promotion.When the customer meets the conditions in the promotion pattern, the customer can be given the benefits in the action.", 
             "required": [
                 "id", 
-				"actionType",
-				"actionValue",
-				"actionObjectId",
-				"operationObjectId"
+		"actionType",
+		"actionValue",
+		"actionObjectId"
             ], 
-			"properties": {
+		"properties": {
                 "actionObjectId": {
                     "type": "string", 
                     "description": "It refers to the object (entity) ID which is impacted by the promotion action. When the Promotion -&gt; type is 1: Award, the actionObjectId is the sub-account ID; When the Promotion -&gt; type is 2: Discount, it is the offering ID; When the Promotion -&gt; type is 3: reduction, it is the offering ID."
@@ -704,7 +703,13 @@
         "PromotionCriteriaGroup": {
             "type": "object", 
             "description": "The group of the criteria of the promotion. The logical relationship between different groups is decided by the relationTypeInGroup.", 
-            "properties": {
+            "required": [
+                "id", 
+		"relationTypeInGroup",
+		"criteria",
+		"groupName"
+            ], 
+		"properties": {
                 "groupName": {
                     "type": "string", 
                     "description": "Name of the group."
@@ -732,10 +737,11 @@
         "PromotionCriteria": {
             "type": "object", 
             "description": "Criteria of the promotion.", 
-			"required": [
+	    "required": [
                 "id", 
-				"groupName",
-				"relationTypeInGroup"
+		"criteriaOperator",
+		"criteriaPara",
+		"criteriaValue"
             ], 
             "properties": {
                 "criteriaOperator": {
