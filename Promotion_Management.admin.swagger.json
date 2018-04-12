@@ -706,7 +706,6 @@
             "required": [
                 "id", 
 		"relationTypeInGroup",
-		"criteria",
 		"groupName"
             ], 
 		"properties": {
