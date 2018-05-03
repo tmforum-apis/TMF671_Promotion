@@ -5,7 +5,7 @@
         "description": "This is Swagger UI environment generated for the TMF Promotion Management specification", 
         "version": "2.0"
     }, 
-    "host": "biologeek.orange-labs.fr", 
+    "host": "serverRoot", 
     "basePath": "/tmf-api/promotionManagement/v2/", 
     "schemes": [
         "https"
@@ -174,6 +174,24 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -208,6 +226,24 @@
                     }, 
                     "400": {
                         "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -259,6 +295,18 @@
                             "$ref": "#/definitions/Error"
                         }
                     }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
                     "500": {
                         "description": "Internal Server Error", 
                         "schema": {
@@ -292,7 +340,7 @@
                     }
                 ], 
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Updated", 
                         "schema": {
                             "$ref": "#/definitions/Promotion"
@@ -306,6 +354,18 @@
                     }, 
                     "404": {
                         "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -345,6 +405,18 @@
                     }, 
                     "404": {
                         "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
                         "schema": {
                             "$ref": "#/definitions/Error"
                         }
@@ -672,11 +744,11 @@
             "description": "Action of the promotion.When the customer meets the conditions in the promotion pattern, the customer can be given the benefits in the action.", 
             "required": [
                 "id", 
-		"actionType",
-		"actionValue",
-		"actionObjectId"
+		        "actionType",
+		        "actionValue",
+		        "actionObjectId"
             ], 
-		"properties": {
+			"properties": {
                 "actionObjectId": {
                     "type": "string", 
                     "description": "It refers to the object (entity) ID which is impacted by the promotion action. When the Promotion -&gt; type is 1: Award, the actionObjectId is the sub-account ID; When the Promotion -&gt; type is 2: Discount, it is the offering ID; When the Promotion -&gt; type is 3: reduction, it is the offering ID."
@@ -705,10 +777,10 @@
             "description": "The group of the criteria of the promotion. The logical relationship between different groups is decided by the relationTypeInGroup.", 
             "required": [
                 "id", 
-		"relationTypeInGroup",
-		"groupName"
-            ], 
-		"properties": {
+		        "relationTypeInGroup",
+		        "groupName"
+            ],
+			"properties": {
                 "groupName": {
                     "type": "string", 
                     "description": "Name of the group."
@@ -735,13 +807,13 @@
         }, 
         "PromotionCriteria": {
             "type": "object", 
-            "description": "Criteria of the promotion.", 
-	    "required": [
+            "description": "Criteria of the promotion.",
+            "required": [
                 "id", 
-		"criteriaOperator",
-		"criteriaPara",
-		"criteriaValue"
-            ], 
+		        "criteriaOperator",
+		        "criteriaPara",
+		        "criteriaValue"
+            ], 			
             "properties": {
                 "criteriaOperator": {
                     "type": "string", 
