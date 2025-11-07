@@ -1,13 +1,8 @@
-# TMF671_Promotion
-TM Forum Open APIs (Apache 2.0) Promotion Management API
+# TMF671 Promotion
 
-Used to provide the additional discount, voucher, bonus or gift to the customer who meets
-the pre-defined criteria. Using promotion, the enterprise is able to attract the users and
-encourage more consumption, especially continuous purchases. Normally Promotion is not
-regarded as one type of product or product offering. It is often applied when the customer
-buys the product offerings with the price or amount surpassing the certain limit.
+TM Forum Open API (Apache 2.0) Promotion API.
 
-To access this API; (the Specification, Postman Collection, Swagger file, Swagger-UI,
-Reference Implementation, Conformance Profile, and CTK) go to the Open API table at:
+the pre-defined criteria. Using promotion, the enterprise is able to attract the users and encourage more consumption, especially continuous purchases. Normally Promotion is not regarded as one type of product or product offering. It is often applied when the customer buys the product offerings with the price or amount surpassing the certain limit.
 
-https://projects.tmforum.org/wiki/display/API/Open+API+Table
+The resources in this repository are a mirror of the official versions, published here for your convenience.
+The authoritative source of information for this API is: https://www.tmforum.org/oda/open-apis/directory/
